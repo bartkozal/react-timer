@@ -1,0 +1,13 @@
+{
+  "name": "react-timer",
+  "version": "1.0.0",
+  "repository": "git@github.com:bkzl/react-timer.git",
+  "author": "Bart Kozal <bkzl@me.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.2.1"
+  }
+}
