@@ -3,6 +3,7 @@
   "rules": {
     "interface-name": [true, "never-prefix"],
     "member-access": false,
-    "curly": [true, "as-needed"]
+    "curly": [true, "as-needed"],
+    "ordered-imports": false
   }
 }
