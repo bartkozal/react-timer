@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-import Timer from './components/Timer';
+import Timer from "./components/Timer";
 
-ReactDOM.render(<Timer />, document.getElementById('root'));
+ReactDOM.render(<Timer minutes={25} />, document.getElementById("root"));
