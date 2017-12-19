@@ -12,7 +12,7 @@ interface TimerState {
 
 export default class Timer extends React.Component<TimerProps, TimerState> {
   state = {
-    counter: this.props.minutes,
+    counter: this.props.minutes * 60 * 60,
     isRunning: false,
     tick: 0,
   };
