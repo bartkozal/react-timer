@@ -64,10 +64,14 @@ class Timer extends React.Component<TimerProps, TimerState> {
     const percent = 100 * this.state.counter / (MAXIMUM_MINUTES * 60 * 60);
     return (
       <div>
-        <Pointer percent={percent} />
-        <img src={svgPath(Glass)} alt="Timer Shield" />
-        <img src={svgPath(Shield)} alt="Timer Shield" />
-        <div>{this.state.counter}</div>
+        <div className="Timer">
+          <img src={svgPath(Shield)} alt="Timer Shield" />
+          <Pointer percent={percent} />
+          <img src={svgPath(Glass)} alt="Timer Shield" />
+        </div>
+
+        <div>Start - Minutes: {this.props.minutes}</div>
+        <div>Frames: {this.state.counter}</div>
         <button onClick={this.toggle}>
           {this.state.isRunning ? "Stop" : "Start"}
         </button>

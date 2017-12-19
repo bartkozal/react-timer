@@ -3,4 +3,4 @@ import * as ReactDOM from "react-dom";
 
 import Timer from "./Timer";
 
-ReactDOM.render(<Timer minutes={1} />, document.getElementById("root"));
+ReactDOM.render(<Timer minutes={25} />, document.getElementById("root"));

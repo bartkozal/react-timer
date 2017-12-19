@@ -25,17 +25,19 @@ class Pointer extends React.PureComponent<PointerProps, {}> {
   render() {
     const percent = this.props.percent / 100;
     return (
-      <svg
-        width="200"
-        height="200"
-        viewBox="-1 -1 2 2"
-        style={{
-          opacity: 0.35,
-          transform: "rotate(-90deg)",
-        }}
-      >
-        <path d={this.pathData(percent)} fill="#FF001F" />
-      </svg>
+      <div>
+        <svg
+          width="152"
+          height="152"
+          viewBox="-1 -1 2 2"
+          style={{
+            opacity: 0.35,
+            transform: "rotate(-90deg) translate(-2px, 0)",
+          }}
+        >
+          <path d={this.pathData(percent)} fill="#FF001F" />
+        </svg>
+      </div>
     );
   }
 }
