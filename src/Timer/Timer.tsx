@@ -17,12 +17,16 @@ interface TimerState {
 
 const MAXIMUM_MINUTES = 60;
 
-class Timer extends React.Component<TimerProps, TimerState> {
+class Timer extends React.PureComponent<TimerProps, TimerState> {
   state = {
-    counter: this.props.minutes * 60 * 60,
+    counter: 0,
     isRunning: false,
     tick: 0,
   };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ counter: this.props.minutes * 60 * 60 });
+  }
 
   componentWillUnmount() {
     this.stop();
@@ -70,8 +74,7 @@ class Timer extends React.Component<TimerProps, TimerState> {
           <img src={svgPath(Glass)} alt="Timer Shield" />
         </div>
 
-        <div>Start - Minutes: {this.props.minutes}</div>
-        <div>Frames: {this.state.counter}</div>
+        <div>Frames: {Math.floor(this.state.counter / 60)}</div>
         <button onClick={this.toggle}>
           {this.state.isRunning ? "Stop" : "Start"}
         </button>
