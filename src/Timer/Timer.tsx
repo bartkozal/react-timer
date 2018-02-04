@@ -20,7 +20,7 @@ const MAXIMUM_MINUTES = 60;
 class Timer extends React.PureComponent<TimerProps, TimerState> {
   state = {
     counter: 0,
-    tick: 0,
+    tick: 0
   };
 
   componentWillReceiveProps(nextProps) {
@@ -38,19 +38,19 @@ class Timer extends React.PureComponent<TimerProps, TimerState> {
 
     this.setState({
       counter: this.state.counter - 1,
-      tick: requestAnimationFrame(this.tick),
+      tick: requestAnimationFrame(this.tick)
     });
   };
 
   start = () => {
     this.setState({
-      tick: requestAnimationFrame(this.tick),
+      tick: requestAnimationFrame(this.tick)
     });
   };
 
   stop = () => {
     this.setState({
-      tick: cancelAnimationFrame(this.state.tick),
+      tick: cancelAnimationFrame(this.state.tick)
     });
   };
 
@@ -58,9 +58,9 @@ class Timer extends React.PureComponent<TimerProps, TimerState> {
     const percent = 100 * this.state.counter / (MAXIMUM_MINUTES * 60 * 60);
     return (
       <div className="Timer">
-        <img src={svgPath(Shield)} alt="Timer Shield" />
+        <img src={svgPath(Shield)} alt="Shield" />
         <Pointer percent={percent} />
-        <img src={svgPath(Glass)} alt="Timer Shield" />
+        <img src={svgPath(Glass)} alt="Glass" />
       </div>
     );
   }
