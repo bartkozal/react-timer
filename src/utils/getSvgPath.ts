@@ -1,3 +1,3 @@
-const svgPath = (path: any): string => `/dist/${path}`;
+const svgPath = (path: any): string => `/dist${path}`;
 
 export default svgPath;
