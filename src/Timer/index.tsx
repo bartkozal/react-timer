@@ -24,7 +24,7 @@ class Timer extends React.PureComponent<TimerProps, TimerState> {
   };
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ counter: this.props.minutes * 60 * 60 }, () => {
+    this.setState({ counter: nextProps.minutes * 60 * 60 }, () => {
       nextProps.isRunning ? this.start() : this.stop();
     });
   }
