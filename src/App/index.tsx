@@ -1,6 +1,6 @@
 import * as React from "react";
-import Timer from "./Timer";
 import { throttle } from "lodash";
+import Timer from "../Timer";
 
 interface AppState {
   isRunning: boolean;
@@ -8,7 +8,7 @@ interface AppState {
   startPosition: number;
 }
 
-class App extends React.PureComponent<{}, AppState> {
+export default class extends React.PureComponent<{}, AppState> {
   state = {
     isRunning: false,
     minutes: 0,
@@ -41,5 +41,3 @@ class App extends React.PureComponent<{}, AppState> {
     );
   }
 }
-
-export default App;

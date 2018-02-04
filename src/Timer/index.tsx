@@ -1,7 +1,7 @@
 import * as React from "react";
 import Pointer from "../Pointer";
+import { svgPath, convertMinutesToFrames } from "../utils";
 
-import { svgPath } from "../utils";
 import * as Shield from "./shield.svg";
 import * as Glass from "./glass.svg";
 
@@ -17,15 +17,15 @@ interface TimerState {
 
 const MAXIMUM_MINUTES = 60;
 
-class Timer extends React.PureComponent<TimerProps, TimerState> {
+export default class extends React.PureComponent<TimerProps, TimerState> {
   state = {
     counter: 0,
     tick: 0
   };
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ counter: nextProps.minutes * 60 * 60 }, () => {
-      nextProps.isRunning ? this.start() : this.stop();
+  componentWillReceiveProps({ minutes, isRunning }) {
+    this.setState({ counter: convertMinutesToFrames(minutes) }, () => {
+      isRunning ? this.start() : this.stop();
     });
   }
 
@@ -55,7 +55,8 @@ class Timer extends React.PureComponent<TimerProps, TimerState> {
   };
 
   render() {
-    const percent = 100 * this.state.counter / (MAXIMUM_MINUTES * 60 * 60);
+    const percent =
+      100 * this.state.counter / convertMinutesToFrames(MAXIMUM_MINUTES);
     return (
       <div className="Timer">
         <img src={svgPath(Shield)} alt="Shield" />
@@ -65,5 +66,3 @@ class Timer extends React.PureComponent<TimerProps, TimerState> {
     );
   }
 }
-
-export default Timer;

@@ -9,7 +9,7 @@ const getCoordinatesForPercent = (percent: number): [number, number] => [
   Math.sin(2 * Math.PI * percent)
 ];
 
-class Pointer extends React.PureComponent<PointerProps, {}> {
+export default class extends React.PureComponent<PointerProps, {}> {
   pathData = (percent: number): string => {
     const [startX, startY] = getCoordinatesForPercent(0);
     const [endX, endY] = getCoordinatesForPercent(percent);
@@ -41,5 +41,3 @@ class Pointer extends React.PureComponent<PointerProps, {}> {
     );
   }
 }
-
-export default Pointer;
