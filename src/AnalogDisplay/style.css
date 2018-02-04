@@ -1,7 +1,3 @@
-.AnalogDisplay {
-  position: relative;
-}
-
 .AnalogDisplay > * {
   position: absolute;
   top: 0;

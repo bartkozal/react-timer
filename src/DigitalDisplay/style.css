@@ -1,0 +1,10 @@
+.DigitalDisplay-dial {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -53.5%);
+  opacity: 0.7;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 100px;
+}

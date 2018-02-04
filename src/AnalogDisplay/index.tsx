@@ -6,12 +6,11 @@ import {
   convertEndTimeToFrames,
   convertMinutesToFrames
 } from "../utils";
-
 import * as Shield from "./shield.svg";
 import * as Glass from "./glass.svg";
 
 interface AnalogDisplayProps {
-  isRunning: boolean;
+  isTimerRunning: boolean;
   minutes: number;
 }
 
@@ -33,12 +32,12 @@ class AnalogDisplay extends React.PureComponent<
     tick: 0
   };
 
-  componentWillReceiveProps({ minutes, isRunning }) {
+  componentWillReceiveProps({ minutes, isTimerRunning }) {
     const counter = convertMinutesToFrames(minutes);
     const endTime = DateTime.local().plus({ minutes });
 
     this.setState({ counter, endTime }, () => {
-      isRunning ? this.start() : this.stop();
+      isTimerRunning ? this.start() : this.stop();
     });
   }
 

@@ -1,8 +1,9 @@
 import * as React from "react";
-import { throttle } from "lodash";
 import AnalogDisplay from "../AnalogDisplay";
+import DigitalDisplay from "../DigitalDisplay";
 
 interface TimerState {
+  isDigitalDisplayVisible: boolean;
   isRunning: boolean;
   minutes: number;
   startPosition: number;
@@ -10,13 +11,14 @@ interface TimerState {
 
 class Timer extends React.PureComponent<{}, TimerState> {
   state = {
+    isDigitalDisplayVisible: false,
     isRunning: false,
     minutes: 0,
     startPosition: 0
   };
 
-  start = () => {
-    this.setState({ isRunning: true });
+  startCounting = () => {
+    this.setState({ isDigitalDisplayVisible: false, isRunning: true });
   };
 
   updateMinutes = (event: React.DragEvent<HTMLDivElement>) => {
@@ -25,18 +27,24 @@ class Timer extends React.PureComponent<{}, TimerState> {
   };
 
   setStartPosition = (event: React.DragEvent<HTMLDivElement>) => {
-    this.setState({ isRunning: false, startPosition: event.pageY });
+    this.setState({
+      isDigitalDisplayVisible: true,
+      isRunning: false,
+      startPosition: event.pageY
+    });
   };
 
   render() {
-    const { minutes, isRunning } = this.state;
+    const { isDigitalDisplayVisible, isRunning, minutes } = this.state;
     return (
       <div
+        className="Timer"
         onDragStart={this.setStartPosition}
         onDrag={this.updateMinutes}
-        onDragEnd={this.start}
+        onDragEnd={this.startCounting}
       >
-        <AnalogDisplay minutes={minutes} isRunning={isRunning} />
+        <AnalogDisplay minutes={minutes} isTimerRunning={isRunning} />
+        <DigitalDisplay minutes={minutes} isVisible={isDigitalDisplayVisible} />
       </div>
     );
   }
