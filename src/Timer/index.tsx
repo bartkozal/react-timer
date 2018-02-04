@@ -1,82 +1,42 @@
 import * as React from "react";
-import { DateTime } from "luxon";
-import Pointer from "../Pointer";
-import {
-  getSvgPath,
-  convertEndTimeToFrames,
-  convertMinutesToFrames
-} from "../utils";
-
-import * as Shield from "./shield.svg";
-import * as Glass from "./glass.svg";
-
-interface TimerProps {
-  isRunning: boolean;
-  minutes: number;
-}
+import { throttle } from "lodash";
+import AnalogDisplay from "../AnalogDisplay";
 
 interface TimerState {
-  counter: number;
-  endTime: DateTime | null;
-  tick: number | void;
+  isRunning: boolean;
+  minutes: number;
+  startPosition: number;
 }
 
-const MAXIMUM_MINUTES = 60;
-
-class Timer extends React.PureComponent<TimerProps, TimerState> {
+class Timer extends React.PureComponent<{}, TimerState> {
   state = {
-    counter: 0,
-    endTime: null,
-    tick: 0
-  };
-
-  componentWillReceiveProps({ minutes, isRunning }) {
-    const counter = convertMinutesToFrames(minutes);
-    const endTime = DateTime.local().plus({ minutes });
-
-    this.setState({ counter, endTime }, () => {
-      isRunning ? this.start() : this.stop();
-    });
-  }
-
-  componentWillUnmount() {
-    this.stop();
-  }
-
-  tick = () => {
-    this.setState(
-      this.state.counter <= 0
-        ? {
-            counter: 0,
-            tick: cancelAnimationFrame(this.state.tick)
-          }
-        : {
-            counter: convertEndTimeToFrames(this.state.endTime) - 1,
-            tick: requestAnimationFrame(this.tick)
-          }
-    );
+    isRunning: false,
+    minutes: 0,
+    startPosition: 0
   };
 
   start = () => {
-    this.setState({
-      tick: requestAnimationFrame(this.tick)
-    });
+    this.setState({ isRunning: true });
   };
 
-  stop = () => {
-    this.setState({
-      tick: cancelAnimationFrame(this.state.tick)
-    });
+  updateMinutes = (event: React.DragEvent<HTMLDivElement>) => {
+    const minutes = this.state.startPosition - event.pageY;
+    if (minutes > 0 && minutes <= 60) this.setState({ minutes });
+  };
+
+  setStartPosition = (event: React.DragEvent<HTMLDivElement>) => {
+    this.setState({ isRunning: false, startPosition: event.pageY });
   };
 
   render() {
-    const percent =
-      100 * this.state.counter / convertMinutesToFrames(MAXIMUM_MINUTES);
+    const { minutes, isRunning } = this.state;
     return (
-      <div className="Timer">
-        <img src={getSvgPath(Shield)} alt="Shield" />
-        <Pointer percent={percent} />
-        <img src={getSvgPath(Glass)} alt="Glass" />
+      <div
+        onDragStart={this.setStartPosition}
+        onDrag={this.updateMinutes}
+        onDragEnd={this.start}
+      >
+        <AnalogDisplay minutes={minutes} isRunning={isRunning} />
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-interface PointerProps {
+interface DialProps {
   percent: number;
 }
 
@@ -9,7 +9,7 @@ const getCoordinatesForPercent = (percent: number): [number, number] => [
   Math.sin(2 * Math.PI * percent)
 ];
 
-class Pointer extends React.PureComponent<PointerProps, {}> {
+class Dial extends React.PureComponent<DialProps, {}> {
   pathData = (percent: number): string => {
     const [startX, startY] = getCoordinatesForPercent(0);
     const [endX, endY] = getCoordinatesForPercent(percent);
@@ -25,21 +25,21 @@ class Pointer extends React.PureComponent<PointerProps, {}> {
   render() {
     const percent = this.props.percent / 100;
     return (
-      <div>
-        <svg
-          width="152"
-          height="152"
-          viewBox="-1 -1 2 2"
-          style={{
-            opacity: 0.35,
-            transform: "rotate(-90deg) translate(-2px, 0)"
-          }}
-        >
-          <path d={this.pathData(percent)} fill="#FF001F" />
-        </svg>
-      </div>
+      <svg
+        width="151"
+        height="151"
+        viewBox="-1 -1 2 2"
+        style={{
+          marginLeft: "25px",
+          marginTop: "23px",
+          opacity: 0.35,
+          transform: "rotate(-90deg) translate(-2px, 0)"
+        }}
+      >
+        <path d={this.pathData(percent)} fill="#FF001F" />
+      </svg>
     );
   }
 }
 
-export default Pointer;
+export default Dial;
