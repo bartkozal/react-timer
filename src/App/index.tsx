@@ -8,7 +8,7 @@ interface AppState {
   startPosition: number;
 }
 
-export default class extends React.PureComponent<{}, AppState> {
+class App extends React.PureComponent<{}, AppState> {
   state = {
     isRunning: false,
     minutes: 0,
@@ -41,3 +41,5 @@ export default class extends React.PureComponent<{}, AppState> {
     );
   }
 }
+
+export default App;
