@@ -1,11 +1,1 @@
-.Timer {
-  position: relative;
-  margin-top: 200px;
-}
-
-.Timer > * {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+@import "./Timer/style.css";

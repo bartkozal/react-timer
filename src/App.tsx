@@ -1,5 +1,5 @@
 import * as React from "react";
-import Timer from "./Timer/";
+import Timer from "./Timer";
 import { throttle } from "lodash";
 
 interface AppState {
@@ -12,7 +12,7 @@ class App extends React.PureComponent<{}, AppState> {
   state = {
     isRunning: false,
     minutes: 0,
-    startPosition: 0,
+    startPosition: 0
   };
 
   startTimer = () => {

@@ -6,7 +6,7 @@ interface PointerProps {
 
 const getCoordinatesForPercent = (percent: number): [number, number] => [
   Math.cos(2 * Math.PI * percent),
-  Math.sin(2 * Math.PI * percent),
+  Math.sin(2 * Math.PI * percent)
 ];
 
 class Pointer extends React.PureComponent<PointerProps, {}> {
@@ -18,7 +18,7 @@ class Pointer extends React.PureComponent<PointerProps, {}> {
     return [
       `M ${startX} ${startY}`,
       `A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}`,
-      `L 0 0`,
+      `L 0 0`
     ].join(" ");
   };
 
@@ -32,7 +32,7 @@ class Pointer extends React.PureComponent<PointerProps, {}> {
           viewBox="-1 -1 2 2"
           style={{
             opacity: 0.35,
-            transform: "rotate(-90deg) translate(-2px, 0)",
+            transform: "rotate(-90deg) translate(-2px, 0)"
           }}
         >
           <path d={this.pathData(percent)} fill="#FF001F" />
