@@ -1,13 +1,10 @@
 import * as React from "react";
 import { DateTime } from "luxon";
 import Dial from "../Dial";
-import {
-  getSvgPath,
-  convertEndTimeToFrames,
-  convertMinutesToFrames
-} from "../utils";
-import * as Shield from "./shield.svg";
-import * as Glass from "./glass.svg";
+import { convertEndTimeToFrames, convertMinutesToFrames } from "../utils";
+import * as shield from "./shield.svg";
+import * as glass from "./glass.svg";
+import * as alarm from "./alarm.wav";
 
 interface AnalogDisplayProps {
   isTimerRunning: boolean;
@@ -45,6 +42,10 @@ class AnalogDisplay extends React.PureComponent<
     this.stop();
   }
 
+  componentDidUpdate(_, prevState) {
+    if (prevState.counter < 0) new Audio(alarm).play();
+  }
+
   tick = () => {
     this.setState(
       this.state.counter <= 0
@@ -76,9 +77,9 @@ class AnalogDisplay extends React.PureComponent<
       100 * this.state.counter / convertMinutesToFrames(MAXIMUM_MINUTES);
     return (
       <div className="AnalogDisplay">
-        <img src={getSvgPath(Shield)} alt="Shield" />
+        <img src={shield} alt="Shield" />
         <Dial percent={percent} />
-        <img src={getSvgPath(Glass)} alt="Glass" />
+        <img src={glass} alt="Glass" />
       </div>
     );
   }

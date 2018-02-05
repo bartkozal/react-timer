@@ -1,6 +1,5 @@
 import * as React from "react";
-import { getSvgPath } from "../utils";
-import * as Shield from "./shield.svg";
+import * as shield from "./shield.svg";
 
 interface DigitalDisplayProps {
   minutes: number;
@@ -12,7 +11,7 @@ const DigitalDisplay = ({ minutes, isVisible }: DigitalDisplayProps) => {
 
   return (
     <div className="DigitalDisplay">
-      <img src={getSvgPath(Shield)} alt="Shield" />
+      <img src={shield} alt="Shield" />
       <div className="DigitalDisplay-dial">{minutes}</div>
     </div>
   );
