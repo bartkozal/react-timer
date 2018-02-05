@@ -5,7 +5,9 @@
   "author": "Bart Kozal <bkzl@me.com>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "parcel src/index.html -d tmp/",
+    "deploy":
+      "parcel build src/index.html --no-cache --public-url //bkzl.github.io/react-timer/ && push-dir --dir='dist' --branch=gh-pages --force"
   },
   "engines": {
     "node": ">=8.3.0"
