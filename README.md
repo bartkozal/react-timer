@@ -1,6 +1,12 @@
 # react-timer
 
-Timer app in TypeScript
+Interactive analog timer created in Sketch, TypeScript and React.
+
+![demo](https://github.com/bkzl/react-timer/raw/master/demo.gif)
+
+⏲ [Live Demo](https://bkzl.github.io/react-timer/)
+
+🎨 [Dribbble Shot](https://dribbble.com/shots/4190236-Analog-Timer)
 
 ## Development
 
