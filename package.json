@@ -1,13 +1,12 @@
 {
   "name": "react-timer",
   "version": "1.0.0",
-  "repository": "git@github.com:bkzl/react-timer.git",
-  "author": "Bart Kozal <bkzl@me.com>",
+  "repository": "git@github.com:brtjkzl/react-timer.git",
+  "author": "Bart Kozal <brtjkzl@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "parcel src/index.html -d tmp/",
-    "deploy":
-      "parcel build src/index.html --no-cache --public-url //bkzl.github.io/react-timer/ && push-dir --dir='dist' --branch=gh-pages --force"
+    "deploy": "parcel build src/index.html --no-cache --public-url //brtjkzl.github.io/react-timer/ && push-dir --dir='dist' --branch=gh-pages --force"
   },
   "engines": {
     "node": ">=8.3.0"

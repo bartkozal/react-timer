@@ -2,9 +2,9 @@
 
 Interactive analog timer created in Sketch, TypeScript and React.
 
-![demo](https://github.com/bkzl/react-timer/raw/master/demo.gif)
+![demo](https://github.com/brtjkzl/react-timer/raw/master/demo.gif)
 
-⏲ [Live Demo](https://bkzl.github.io/react-timer/)
+⏲ [Live Demo](https://brtjkzl.github.io/react-timer/)
 
 🎨 [Dribbble Shot](https://dribbble.com/shots/4190236-Analog-Timer)
 
@@ -13,7 +13,7 @@ Interactive analog timer created in Sketch, TypeScript and React.
 1. Clone the repository:
 
    ```sh
-   $ git clone git@github.com:bkzl/react-timer.git
+   $ git clone git@github.com:brtjkzl/react-timer.git
    ```
 
 2. Install dependencies:
@@ -30,6 +30,6 @@ Interactive analog timer created in Sketch, TypeScript and React.
 
 ---
 
-Code is open sourced [on GitHub](https://github.com/bkzl/react-timer).
+Code is open sourced [on GitHub](https://github.com/brtjkzl/react-timer).
 I appreciate any comments and feedback. Have you experienced a bug? Please
-[create an issue](https://github.com/bkzl/react-timer/issues). Thanks!
+[create an issue](https://github.com/brtjkzl/react-timer/issues). Thanks!
